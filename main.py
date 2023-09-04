@@ -172,7 +172,77 @@ def randomizer():
     randomnum = random.randint(1, 100)
     Label(screen16, text = randomnum, fg = '#0ca4eb', font = ('calibri', 15)).pack()
 
-#add stats and calc.
+#Function is executed when clicks Guessing Game
+def guessrange():
+    global screen17
+    screen17 = Toplevel(screen)
+    screen17.title('Range of Guesses')
+    screen17.geometry('200x250')
+    Label(screen17, text = 'First number in range').pack()
+    global num1
+    num1 = Entry(screen17)
+    num1.pack()
+    Label(screen17, text = 'Second number in range').pack()
+    global num2
+    num2 = Entry(screen17)
+    num2.pack()
+    Button(screen17, text = 'Go', command = guessinggame).pack()
+
+#Function is executed when click Go
+def guessinggame():
+    global screen18
+    screen18 = Toplevel(screen)
+    screen18.title('Guessing Game')
+    screen18.geometry('300x250')
+    global num
+    num = int(num1.get())
+    global nume
+    nume = int(num2.get())
+    global secret
+    secret = random.randint(num, nume)
+    global guess1
+    guess1 = Entry(screen18)
+    guess1.pack()
+    Button(screen18, text = 'Reset', command = reset).pack()
+    Button(screen18, text = 'Guess', command = guesscheck).pack()
+
+#Function is executed when one clicks Guess
+def guesscheck():
+    guess = int(guess1.get())
+    guess1.delete(0, END)
+    if guess == secret:
+        Label(screen18, text = 'You Win!', fg = '#1fdb80', font = ('calibri', 15)).pack()
+    elif guess < secret:
+        Label(screen18, text = 'Your guess is too low', fg = 'red', font = ('calibri', 15)).pack()
+    elif guess > secret:
+        Label(screen18, text = 'Your guess is too high', fg = 'red', font = ('calibri', 15)).pack()
+    else:
+        Label(screen18, text = 'Invalid', fg = 'red', font = ('calibri', 15)).pack()
+
+#Function is executed when one clicks Reset
+def reset():
+    global secret
+    secret = random.randint(num, nume)
+
+#Function is executed when one clicks to Flip a Coin
+def flip():
+    global screen19
+    screen19 = Toplevel(screen)
+    screen19.title("Flip a Coin")
+    screen19.geometry('300x300')
+    Button(screen19, text = 'Flip', command = coin).pack()
+
+#Function is executed when one clicks Flip
+def coin():
+    global coinside
+    sides = ['Heads', 'Tales']
+    coinside = random.choice(sides)
+    if coinside == 'Heads':
+        Label(screen19, text = 'Heads').pack()
+    else:
+        Label(screen19, text = 'Tales').pack()
+
+#this is the spot
 
 #Function is executed when one's Username is not authorized.
 def user_not_found():
