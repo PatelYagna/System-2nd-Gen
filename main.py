@@ -242,7 +242,72 @@ def coin():
     else:
         Label(screen19, text = 'Tales').pack()
 
-#this is the spot
+#Function is executed when one clicks Calculator
+def calculator():
+    global screen20
+    screen20 = Toplevel(screen)
+    screen.title("Calculator")
+    screen.geometry('330x370')
+
+    Label(screen20, text = 'Enter 1st number').pack()
+    global firstnum
+    firstnum = Entry(screen20)
+    firstnum.pack()
+    Label(screen20, text = 'Enter second number').pack()
+    global secondnum
+    secondnum = Entry(screen20)
+    secondnum.pack()
+    Button(screen20, text = 'Addition', command = addition).pack()
+    Button(screen20, text = 'Subtraction', command = substraction).pack()
+    Button(screen20, text = 'Multiplication', command = multiplication).pack()
+    Button(screen20, text = 'Division', command = divison).pack()
+    Button(screen20, text = 'Power', command = powering).pack()
+
+#Function is executed when one clicks Addition.
+def addition():
+    fn = int(firstnum.get())
+    sn = int(secondnum.get())
+    firstnum.delete(0, END)
+    secondnum.delete(0, END)
+    added = fn + sn
+    Label(screen20, text = added, fg = 'red', font = ('calibri', 15)).pack()
+
+#Function is executed when one clicks Substraction.
+def substraction():
+    fn = int(firstnum.get())
+    sn = int(secondnum.get())
+    firstnum.delete(0, END)
+    secondnum.delete(0, END)
+    subtracted = fn - sn
+    Label(screen20, text = subtracted, fg = 'red', font = ('calibri', 15)).pack()
+
+#Function is executed when one clicks Mltiplication.
+def multiplication():
+    fn = int(firstnum.get())
+    sn = int(secondnum.get())
+    firstnum.delete(0, END)
+    secondnum.delete(0, END)
+    multiplied = fn * sn
+    Label(screen20, text = multiplied, fg = 'red', font = ('calibri', 15)).pack()
+
+#Function is executed when one clicks Divison.
+def divison():
+    fn = int(firstnum.get())
+    sn = int(secondnum.get())
+    firstnum.delete(0, END)
+    secondnum.delete(0, END)
+    divided = fn / sn
+    Label(screen20, text = divided, fg = 'red', font = ('calibri', 15)).pack()
+
+#Function is executed when one clicks Power.
+def powering():
+    fn = int(firstnum.get())
+    sn = int(secondnum.get())
+    firstnum.delete(0, END)
+    secondnum.delete(0, END)
+    powered = fn ** sn
+    Label(screen20, text = powered, fg = 'red', font = ('calibri', 15)).pack()
+
 
 #Function is executed when one's Username is not authorized.
 def user_not_found():
