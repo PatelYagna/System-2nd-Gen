@@ -308,6 +308,72 @@ def powering():
     powered = fn ** sn
     Label(screen20, text = powered, fg = 'red', font = ('calibri', 15)).pack()
 
+#Function is executed when one clicks Statistics.
+def statistics():
+    global screen21
+    screen21 = Toplevel(screen)
+    screen21.title('Statistics Calculator')
+    screen21.geometry('320x400')
+    global statlist
+    statlist = []
+    global rnumber_entry
+    rnumber_entry = Entry(screen21)
+    rnumber_entry.pack()
+    Button(screen21, text = 'OK', command = listing).pack()
+    Button(screen21, text = 'Clear', command = clear).pack()
+    Button(screen21, text = 'Variance', command = variance).pack()
+    Button(screen21, text = 'Mean', command = mean).pack()
+    Button(screen21, text = 'Median', command = median).pack()
+    Button(screen21, text = 'Meadian High', command = median_high).pack()
+    Button(screen21, text = 'Meadian Low', command = median_low).pack()
+    Button(screen21, text = 'Mode', command = mode).pack()
+    Button(screen21, text = 'Harmonic Mean', command = harmonic_mean).pack()
+
+#Function is executed when one clicks OK.
+def listing():
+    sn = int(rnumber_entry.get())
+    statlist.append(sn)
+    rnumber_entry.delete(0, END)
+
+#Function is executed when one clicks Clear.
+def clear():
+    del statlist [:]
+
+#Function is executed when one clicks Variance.
+def variance():
+    sa = v(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Mean.
+def mean():
+    sa = m(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Median.
+def median():
+    sa = med(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Median High.
+def median_high():
+    sa = med_h(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Median Low.
+def median_low():
+    sa = med_l(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Mode.
+def mode():
+    sa = mo(statlist)
+    Label(screen21, text = sa).pack()
+
+#Function is executed when one clicks Harmonic Mean.
+def harmonic_mean():
+    sa = hm(statlist)
+    Label(screen21, text = sa).pack()
+
 
 #Function is executed when one's Username is not authorized.
 def user_not_found():
